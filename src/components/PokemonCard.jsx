@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-const PokemonCard = ({ pokemon, onAddToTeam, isInTeam }) => {
+const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
   return (
     <Card
       sx={{
@@ -29,9 +29,15 @@ const PokemonCard = ({ pokemon, onAddToTeam, isInTeam }) => {
         <Typography gutterBottom variant="h5" component="div">
           {pokemon.name}
         </Typography>
-        <Button variant="contained" onClick={onAddToTeam}>
-          {isInTeam ? 'In Team' : 'Add to Team'}
-        </Button>
+        {isInTeam ? (
+          <Button variant="contained" color="secondary" onClick={onRemoveFromTeam}>
+            Remove
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={onAddToTeam}>
+            Add to Team
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

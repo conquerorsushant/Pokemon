@@ -1,4 +1,4 @@
-// src/hooks/useTeams.js
+// src/hooks/useTeams.jsx
 
 import { useState, useEffect } from 'react';
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import PokemonList from './PokemonList';
-import TeamList from './TeamList';
+import TeamManager from './TeamManager';
 
 const Layout = ({
   pokemons,
@@ -15,39 +15,37 @@ const Layout = ({
   deleteTeam,
   newTeamName,
   setNewTeamName,
-  createNewTeam
+  createNewTeam,
 }) => {
   return (
     <Router>
       <Navbar />
       <div className="container">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
-              <PokemonList 
-                pokemons={pokemons} 
-                teams={teams} 
-                addPokemonToTeam={addPokemonToTeam} 
+              <PokemonList
+                pokemons={pokemons}
+                teams={teams}
+                addPokemonToTeam={addPokemonToTeam}
+                removePokemonFromTeam={removePokemonFromTeam} // Ensure this prop is passed
                 newTeamName={newTeamName}
                 setNewTeamName={setNewTeamName}
                 createNewTeam={createNewTeam}
               />
-            } 
+            }
           />
-          <Route 
-            path="/teams" 
+          <Route
+            path="/teams"
             element={
-              <TeamList 
+              <TeamManager
                 teams={teams}
-                removePokemonFromTeam={removePokemonFromTeam}
+                removePokemonFromTeam={removePokemonFromTeam} // Ensure this prop is passed
                 updateTeamName={updateTeamName}
                 deleteTeam={deleteTeam}
-                newTeamName={newTeamName}
-                setNewTeamName={setNewTeamName}
-                createNewTeam={createNewTeam}
               />
-            } 
+            }
           />
         </Routes>
       </div>

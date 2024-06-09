@@ -7,7 +7,15 @@ import MenuItem from '@mui/material/MenuItem';
 import PokemonCard from './PokemonCard';
 import TeamCreationForm from './TeamCreationForm';
 
-const PokemonList = ({ pokemons, teams, addPokemonToTeam, newTeamName, setNewTeamName, createNewTeam }) => {
+const PokemonList = ({
+  pokemons,
+  teams,
+  addPokemonToTeam,
+  removePokemonFromTeam, // Ensure this prop is received
+  newTeamName,
+  setNewTeamName,
+  createNewTeam,
+}) => {
   const [selectedTeam, setSelectedTeam] = useState('');
 
   const handleAddToTeam = (pokemon) => {
@@ -18,9 +26,17 @@ const PokemonList = ({ pokemons, teams, addPokemonToTeam, newTeamName, setNewTea
     addPokemonToTeam(pokemon, selectedTeam);
   };
 
+  const handleRemoveFromTeam = (pokemon) => {
+    if (selectedTeam === '') {
+      alert('Please select a team.');
+      return;
+    }
+    removePokemonFromTeam(pokemon.id, selectedTeam);
+  };
+
   const isPokemonInTeam = (pokemon) => {
     if (selectedTeam === '') return false;
-    return teams[selectedTeam].pokemons.some(p => p.id === pokemon.id);
+    return teams[selectedTeam].pokemons.some((p) => p.id === pokemon.id);
   };
 
   return (
@@ -33,9 +49,13 @@ const PokemonList = ({ pokemons, teams, addPokemonToTeam, newTeamName, setNewTea
           displayEmpty
           style={{ width: '200px', marginRight: '10px' }}
         >
-          <MenuItem value="" disabled>Select Team</MenuItem>
+          <MenuItem value="" disabled>
+            Select Team
+          </MenuItem>
           {teams.map((team, index) => (
-            <MenuItem key={index} value={index}>{team.name}</MenuItem>
+            <MenuItem key={index} value={index}>
+              {team.name}
+            </MenuItem>
           ))}
         </Select>
         <TeamCreationForm
@@ -45,11 +65,12 @@ const PokemonList = ({ pokemons, teams, addPokemonToTeam, newTeamName, setNewTea
         />
       </div>
       <Grid container spacing={2}>
-        {pokemons.map(pokemon => (
+        {pokemons.map((pokemon) => (
           <Grid item xs={12} sm={6} md={4} lg={2} key={pokemon.id}>
             <PokemonCard
               pokemon={pokemon}
               onAddToTeam={() => handleAddToTeam(pokemon)}
+              onRemoveFromTeam={() => handleRemoveFromTeam(pokemon)} // Correctly call the handler
               isInTeam={isPokemonInTeam(pokemon)}
             />
           </Grid>
