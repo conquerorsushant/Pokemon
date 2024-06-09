@@ -8,6 +8,7 @@ import './App.css';
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [username, setUsername] = useState('');
   const {
     teams,
     newTeamName,
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <Layout 
       pokemons={pokemons}
+      setPokemons={setPokemons}
       teams={teams}
       addPokemonToTeam={addPokemonToTeam}
       removePokemonFromTeam={removePokemonFromTeam}
@@ -38,6 +40,8 @@ const App = () => {
       newTeamName={newTeamName}
       setNewTeamName={setNewTeamName}
       createNewTeam={createNewTeam}
+      username={username}
+      setUsername={setUsername}
     />
   );
 };

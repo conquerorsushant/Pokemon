@@ -5,9 +5,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import PokemonList from './PokemonList';
 import TeamManager from './TeamManager';
+import AllPokemonPage from './AllPokemonPage'; // Import the new component
 
 const Layout = ({
   pokemons,
+  setPokemons,
   teams,
   addPokemonToTeam,
   removePokemonFromTeam,
@@ -16,6 +18,8 @@ const Layout = ({
   newTeamName,
   setNewTeamName,
   createNewTeam,
+  username,
+  setUsername,
 }) => {
   return (
     <Router>
@@ -27,12 +31,15 @@ const Layout = ({
             element={
               <PokemonList
                 pokemons={pokemons}
+                setPokemons={setPokemons}
                 teams={teams}
                 addPokemonToTeam={addPokemonToTeam}
-                removePokemonFromTeam={removePokemonFromTeam} // Ensure this prop is passed
+                removePokemonFromTeam={removePokemonFromTeam}
                 newTeamName={newTeamName}
                 setNewTeamName={setNewTeamName}
                 createNewTeam={createNewTeam}
+                username={username}
+                setUsername={setUsername}
               />
             }
           />
@@ -41,12 +48,13 @@ const Layout = ({
             element={
               <TeamManager
                 teams={teams}
-                removePokemonFromTeam={removePokemonFromTeam} // Ensure this prop is passed
+                removePokemonFromTeam={removePokemonFromTeam}
                 updateTeamName={updateTeamName}
                 deleteTeam={deleteTeam}
               />
             }
           />
+          <Route path="/all-pokemon" element={<AllPokemonPage />} /> {/* Add this route */}
         </Routes>
       </div>
     </Router>

@@ -9,42 +9,73 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
-const TeamManager = ({ teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
+const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
   return (
     <div>
-      <h2>Teams</h2>
+      <h2 style={{ color: 'white',marginBottom:'20px' }}>{username ? `${username}'s Teams` : 'Teams'}</h2>
       {teams.map((team, index) => (
-        <div key={index}>
-          <TextField
-            label={`Team ${index + 1} Name`}
-            value={team.name}
-            onChange={(e) => updateTeamName(index, e.target.value)}
-            style={{ marginTop: '20px', width: '100%' }}
-          />
-          <Button variant="contained" color="secondary" onClick={() => deleteTeam(index)}>Delete Team</Button>
-          <Grid container spacing={2}>
-            {team.pokemons.map(pokemon => (
-              <Grid item xs={12} sm={6} md={4} lg={2} key={pokemon.id}>
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <div style={{ display: 'flex', marginBottom: '10px' }}>
+            <TextField
+              value={team.name}
+              onChange={(e) => updateTeamName(index, e.target.value)}
+              style={{ width: '20%', color: 'white',border:'2px solid white' }}
+              InputProps={{
+                style: {
+                  color: 'white',
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: 'white',
+                },
+              }}
+            />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => deleteTeam(index)}
+              style={{ marginLeft: 'auto' }}
+            >
+              Remove Team
+            </Button>
+          </div>
+          <Grid container spacing={2} justifyContent="center">
+            {team.pokemons.map((pokemon) => (
+              <Grid item xs={12} sm={6} md={4} lg={2.4} key={pokemon.id}>
                 <Card
                   sx={{
                     transition: 'transform 0.3s, box-shadow 0.3s',
                     '&:hover': {
                       transform: 'scale(1.05)',
-                      boxShadow: '0 8px 16px rgba(0,0,0,0.3)'
-                    }
+                      boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+                    },
+                    width: '230px',
+                    height: 'auto',
                   }}
                 >
                   <CardMedia
                     component="img"
-                    height="100"
                     image={pokemon.sprites.front_default}
                     alt={pokemon.name}
+                    sx={{
+                      width: '100%',
+                      height: '150px',
+                      objectFit: 'contain',
+                    }}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {pokemon.name}
                     </Typography>
-                    <Button variant="contained" color="secondary" onClick={() => removePokemonFromTeam(pokemon.id, index)}>Remove</Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => removePokemonFromTeam(pokemon.id, index)}
+                      style={{ marginTop: '10px' }}
+                    >
+                      Remove
+                    </Button>
                   </CardContent>
                 </Card>
               </Grid>

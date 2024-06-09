@@ -20,6 +20,8 @@ const useTeams = () => {
 
   const [teams, setTeams] = useState(initializeTeams);
   const [newTeamName, setNewTeamName] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
 
   useEffect(() => {
     localStorage.setItem('teams', JSON.stringify(teams));
@@ -30,7 +32,8 @@ const useTeams = () => {
       const updatedTeams = [...prevTeams];
       const team = updatedTeams[teamIndex].pokemons;
       if (team.length >= 6) {
-        alert('A team can only have up to 6 Pokémon.');
+        setDialogMessage('A team can only have up to 6 Pokémon.');
+        setDialogOpen(true);
         return prevTeams;
       }
       if (team && !team.find(p => p.id === pokemon.id)) {
@@ -61,7 +64,8 @@ const useTeams = () => {
 
   const createNewTeam = () => {
     if (newTeamName.trim() === '') {
-      alert('Team name cannot be empty.');
+      setDialogMessage('Team name cannot be empty.');
+      setDialogOpen(true);
       return;
     }
     setTeams(prevTeams => [...prevTeams, { name: newTeamName, pokemons: [] }]);
@@ -81,6 +85,9 @@ const useTeams = () => {
     updateTeamName,
     createNewTeam,
     deleteTeam,
+    dialogOpen,
+    setDialogOpen,
+    dialogMessage,
   };
 };
 
