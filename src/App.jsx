@@ -5,7 +5,7 @@ import useTeams from './hooks/useTeams';
 import './App.css';
 
 const App = () => {
-  const [pokemons, setPokemons] = useState([]); // State to hold fetched Pokémon
+  const [pokemons, setPokemons] = useState([]); 
   
 
   // Custom hook to manage teams
