@@ -39,6 +39,7 @@ const PokemonList = ({
       return;
     }
     addPokemonToTeam(pokemon, selectedTeam);
+    console.log(selectedTeam)
   };
 
   // Handles removing a Pokémon from the selected team

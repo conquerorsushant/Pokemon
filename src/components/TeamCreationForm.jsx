@@ -5,13 +5,13 @@ const TeamCreationForm = ({ newTeamName, setNewTeamName, createNewTeam, username
   return (
     <div style={{ marginBottom: '20px' }}>
       {/* Input field for entering the username */}
-      <input
+      {/* <input
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Enter username"
         style={{ marginRight: '10px', height: '30px' }}
-      />
+      /> */}
       {/* Input field for entering the team name */}
       <input
         type="text"
@@ -20,7 +20,7 @@ const TeamCreationForm = ({ newTeamName, setNewTeamName, createNewTeam, username
         placeholder="Enter team name"
         style={{ marginRight: '10px', height: '30px' }}
       />
-      {/* Button to create a new team */}
+      
       <Button variant="contained" onClick={createNewTeam}>Create Team</Button>
     </div>
   );

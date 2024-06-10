@@ -1,5 +1,3 @@
-// src/components/AllPokemonPage.jsx
-
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import PokemonCard from './PokemonCard';
