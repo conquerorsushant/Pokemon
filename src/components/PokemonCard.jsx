@@ -22,8 +22,8 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
           transform: 'scale(1.05)',
           boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
         },
-        width: '230px', // Fixed width for square shape
-        height: 'auto', // Fixed height for square shape
+        width: '230px', 
+        height: 'auto', 
       }}
     >
       <CardMedia
@@ -32,8 +32,8 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
         alt={pokemon.name}
         sx={{
           width: '100%',
-          height: '150px', // Adjust height to fit image within the card
-          objectFit: 'contain', // Ensure the image is contained within the card without distortion
+          height: '150px', 
+          objectFit: 'contain', 
         }}
       />
       <CardContent>

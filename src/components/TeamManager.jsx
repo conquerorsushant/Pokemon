@@ -5,16 +5,24 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
+import useTeams from '../hooks/useTeams'; 
 
+const TeamManager = () => {
+  const {
+    teams,
+    removePokemonFromTeam,
+    deleteTeam,
 
-const TeamManager = ({ teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
-  
+  } = useTeams();
 
+  useEffect(() => {
+    // This effect will trigger every time teams change
+    console.log('Teams updated:', teams);
+  }, [teams]);
 
   return (
     <div>
-      {/* Display the username's teams or just 'Teams' if no username */}
+      
       <h2 style={{ color: 'white', marginBottom: '20px', textDecoration: 'underline' }}>
         Teams Created
       </h2>
@@ -28,22 +36,19 @@ const TeamManager = ({ teams, removePokemonFromTeam, updateTeamName, deleteTeam 
         teams.map((team, index) => (
           <div key={index} style={{ marginBottom: '20px' }}>
             <div style={{ display: 'flex', marginBottom: '10px' }}>
-              {/* Text field to update team name */}
-              <TextField
-                value={team.name}
-                onChange={(e) => updateTeamName(index, e.target.value)}
-                style={{ width: '20%', color: 'white', border: '2px solid white' }}
-                InputProps={{
-                  style: {
-                    color: 'white',
-                  },
+              
+              <Typography
+                variant="body1"
+                style={{
+                  width: '20%',
+                  color: 'white',
+                  border: '2px solid white',
+                  padding: '10px',
+                  marginRight: '10px'
                 }}
-                InputLabelProps={{
-                  style: {
-                    color: 'white',
-                  },
-                }}
-              />
+              >
+                {team.name}
+              </Typography>
               {/* Button to remove team */}
               <Button
                 variant="contained"
@@ -83,7 +88,7 @@ const TeamManager = ({ teams, removePokemonFromTeam, updateTeamName, deleteTeam 
                       <Typography gutterBottom variant="h5" component="div">
                         {pokemon.name}
                       </Typography>
-                      {/* Button to remove Pokémon from team */}
+                      
                       <Button
                         variant="contained"
                         color="secondary"

@@ -36,7 +36,7 @@ const AllPokemonPage = () => {
         <Grid container spacing={2}>
           {allPokemons.map((pokemon) => (
             <Grid item xs={12} sm={6} md={4} lg={2.4} key={pokemon.id}>
-              
+
               <PokemonCard pokemon={pokemon} />
             </Grid>
           ))}

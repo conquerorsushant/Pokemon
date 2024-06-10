@@ -5,12 +5,12 @@ import TeamCreationForm from './TeamCreationForm';
 const TeamList = ({
   teams,
   removePokemonFromTeam,
-  updateTeamName,
   deleteTeam,
   newTeamName,
   setNewTeamName,
   createNewTeam
 }) => {
+  
   return (
     <div>
       {/* Component for creating a new team */}
@@ -23,7 +23,6 @@ const TeamList = ({
       <TeamManager
         teams={teams}
         removePokemonFromTeam={removePokemonFromTeam}
-        updateTeamName={updateTeamName}
         deleteTeam={deleteTeam}
       />
     </div>

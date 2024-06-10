@@ -31,7 +31,7 @@ const PokemonList = ({
     setDialogMessage,
   } = useTeams();
 
-  // Handles adding a Pokémon to the selected team
+  // Handles adding a Pokemon to the selected team
   const handleAddToTeam = (pokemon) => {
     if (selectedTeam === '') {
       setDialogMessage('Please select a team.');
@@ -42,7 +42,7 @@ const PokemonList = ({
     console.log(selectedTeam)
   };
 
-  // Handles removing a Pokémon from the selected team
+  // Handles removing a Pokemon from the selected team
   const handleRemoveFromTeam = (pokemon) => {
     if (selectedTeam === '') {
       setDialogMessage('Please select a team.');
@@ -52,7 +52,7 @@ const PokemonList = ({
     removePokemonFromTeam(pokemon.id, selectedTeam);
   };
 
-  // Checks if a Pokémon is in the selected team
+  // Checks if a Pokemon is in the selected team
   const isPokemonInTeam = (pokemon) => {
     if (selectedTeam === '') return false;
     return teams[selectedTeam].pokemons.some((p) => p.id === pokemon.id);
@@ -83,6 +83,9 @@ const PokemonList = ({
             </MenuItem>
           ))}
         </Select>
+        <h2 style={{ color: 'white', marginBottom: '20px', textDecoration: 'underline' }}>
+        Create Your Team By Adding 6 Pokemons
+      </h2>
 
         {/* Team creation form */}
         <TeamCreationForm

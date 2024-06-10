@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '@mui/material/Button';
 
 const TeamCreationForm = ({ newTeamName, setNewTeamName, createNewTeam }) => {
+
+    
   return (
     <div style={{ marginBottom: '20px' }}>
       
