@@ -16,7 +16,7 @@ Welcome to the Pokémon Web Application! This application allows users to create
 - React: A JavaScript library for building user interfaces.
 - React Router: A routing library for React applications.
 - Material-UI: A popular React UI framework for building user interfaces.
--Local-Storage: Data have been stored on local storage.
+- Local-Storage:  Used for storing the data locally.
 
 ## Dependencies need to be install
 

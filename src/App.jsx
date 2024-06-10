@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]); // State to hold fetched Pokémon
-  const [username, setUsername] = useState(''); // State to hold the username
+  
 
   // Custom hook to manage teams
   const {
@@ -39,8 +39,7 @@ const App = () => {
       newTeamName={newTeamName}
       setNewTeamName={setNewTeamName}
       createNewTeam={createNewTeam}
-      username={username}
-      setUsername={setUsername}
+     
     />
   );
 };

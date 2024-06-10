@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,12 +7,16 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
-const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
+
+const TeamManager = ({ teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
+  
+
+
   return (
     <div>
       {/* Display the username's teams or just 'Teams' if no username */}
-      <h2 style={{ color: 'white', marginBottom: '20px' }}>
-        {username ? `${username}'s Teams` : 'Teams'}
+      <h2 style={{ color: 'white', marginBottom: '20px', textDecoration: 'underline' }}>
+        Teams Created
       </h2>
       {/* Check if there are no teams to display */}
       {teams.length === 0 ? (

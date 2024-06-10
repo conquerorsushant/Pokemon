@@ -25,8 +25,7 @@ const Layout = ({
   newTeamName,
   setNewTeamName,
   createNewTeam,
-  username,
-  setUsername,
+  
 }) => {
   return (
     <Router>
@@ -46,8 +45,7 @@ const Layout = ({
                 newTeamName={newTeamName}
                 setNewTeamName={setNewTeamName}
                 createNewTeam={createNewTeam}
-                username={username}
-                setUsername={setUsername}
+               
               />
             }
           />

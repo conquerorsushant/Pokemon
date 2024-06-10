@@ -9,7 +9,9 @@ const AllPokemonPage = ({ allPokemons }) => {
 
   return (
     <div>
-      <h2>All Pokémon</h2>
+      <h2 style={{ color: 'white', marginBottom: '20px',textDecoration:'underline' }}>
+        My Pokemons
+      </h2>
       <Grid container spacing={2}>
         {uniquePokemons.map((pokemon) => (
           <Grid item xs={12} sm={6} md={4} lg={2.4} key={pokemon.id}>
