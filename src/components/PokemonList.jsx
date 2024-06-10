@@ -13,10 +13,7 @@ import TeamCreationForm from './TeamCreationForm';
 import { fetchPokemons } from '../services/pokemonService';
 import useTeams from '../hooks/useTeams';
 
-const PokemonList = ({
-    pokemons,
-    setPokemons,
-}) => {
+const PokemonList = ({ pokemons, setPokemons }) => {
     const [selectedTeam, setSelectedTeam] = useState('');
     const {
         teams,
@@ -39,16 +36,11 @@ const PokemonList = ({
             return;
         }
         addPokemonToTeam(pokemon, selectedTeam);
-        console.log(selectedTeam)
+        console.log(selectedTeam);
     };
 
     // Handles removing a Pokémon from the selected team
     const handleRemoveFromTeam = (pokemon) => {
-        if (selectedTeam === '') {
-            setDialogMessage('Please select a team.');
-            setDialogOpen(true);
-            return;
-        }
         removePokemonFromTeam(pokemon.id, selectedTeam);
     };
 
@@ -67,7 +59,6 @@ const PokemonList = ({
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-          
                 {/* Team selection dropdown */}
                 <Select
                     value={selectedTeam}
@@ -84,9 +75,9 @@ const PokemonList = ({
                         </MenuItem>
                     ))}
                 </Select>
-                <h2 style={{ color: 'white', marginBottom: '20px',marginLeft:'3px', textDecoration: 'underline' }}>
-        Make Your  Team of 6 Pokemon
-      </h2>
+                <h2 style={{ color: 'white', marginBottom: '20px', marginLeft: '3px', textDecoration: 'underline',fontStyle:'italic' }}>
+                Create Your Team and Start Adding  Pokemons
+                </h2>
 
                 {/* Team creation form */}
                 <TeamCreationForm

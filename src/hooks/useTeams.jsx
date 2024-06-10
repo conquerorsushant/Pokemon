@@ -32,8 +32,8 @@ const useTeams = () => {
     setTeams(prevTeams => {
       const updatedTeams = [...prevTeams];
       const team = updatedTeams[teamIndex].pokemons;
-      if (team.length >= 6) {
-        setDialogMessage('A team can only have up to 6 Pokémon.');
+      if (team.length === 6) {
+        setDialogMessage('A team can only have up to 6 Pokémon. Create new Team');
         setDialogOpen(true);
         return prevTeams;
       }
