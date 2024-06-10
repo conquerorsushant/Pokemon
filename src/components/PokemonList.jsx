@@ -57,14 +57,14 @@ const PokemonList = ({ pokemons, setPokemons }) => {
     };
 
     return (
-        <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <div style={{ padding: '20px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: '20px' }}>
                 {/* Team selection dropdown */}
                 <Select
                     value={selectedTeam}
                     onChange={(e) => setSelectedTeam(e.target.value)}
                     displayEmpty
-                    style={{ width: '200px', marginRight: '10px', color: 'white', border: '2px solid white' }}
+                    style={{ width: '200px', marginBottom: '10px', color: 'white', border: '2px solid white' }}
                 >
                     <MenuItem value="" disabled>
                         Select Team
@@ -75,8 +75,8 @@ const PokemonList = ({ pokemons, setPokemons }) => {
                         </MenuItem>
                     ))}
                 </Select>
-                <h2 style={{ color: 'white', marginBottom: '20px', marginLeft: '3px', textDecoration: 'underline',fontStyle:'italic' }}>
-                Create Your Team and Start Adding  Pokemons
+                <h2 style={{ color: 'white', marginBottom: '20px', marginLeft: '3px', textDecoration: 'underline', fontStyle: 'italic' }}>
+                    Create Your Team and Start Adding Pokemons
                 </h2>
 
                 {/* Team creation form */}
