@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import useTeams from '../hooks/useTeams';
 
-const TeamCreationForm = () => {
-    const {
-        newTeamName,
-        setNewTeamName,
-        createNewTeam,
-    } = useTeams();
+
+const TeamCreationForm = ({newTeamName,
+    setNewTeamName,
+    createNewTeam,}) => {
+    
+        
+    
 
 
 
