@@ -1,53 +1,46 @@
-// src/components/Layout.jsx
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import PokemonList from './PokemonList';
-import TeamList from './TeamList';
+import TeamManager from './TeamManager';
+import AllPokemonPage from './AllPokemonPage'; // Import the AllPokemonPage component
 
 const Layout = ({
   pokemons,
-  teams,
-  addPokemonToTeam,
-  removePokemonFromTeam,
-  updateTeamName,
-  deleteTeam,
-  newTeamName,
-  setNewTeamName,
-  createNewTeam
+  setPokemons,
 }) => {
+
+  
+
   return (
     <Router>
       <Navbar />
       <div className="container">
         <Routes>
-          <Route 
-            path="/" 
+          {/* Route for displaying the Pokémon list and managing teams */}
+          <Route
+            path="/"
             element={
-              <PokemonList 
-                pokemons={pokemons} 
-                teams={teams} 
-                addPokemonToTeam={addPokemonToTeam} 
-                newTeamName={newTeamName}
-                setNewTeamName={setNewTeamName}
-                createNewTeam={createNewTeam}
+              <PokemonList
+                pokemons={pokemons}
+                setPokemons={setPokemons}
+               
               />
-            } 
+            }
           />
-          <Route 
-            path="/teams" 
+          {/* Route for managing teams */}
+          <Route
+            path="/teams"
             element={
-              <TeamList 
-                teams={teams}
-                removePokemonFromTeam={removePokemonFromTeam}
-                updateTeamName={updateTeamName}
-                deleteTeam={deleteTeam}
-                newTeamName={newTeamName}
-                setNewTeamName={setNewTeamName}
-                createNewTeam={createNewTeam}
+              <TeamManager
+               
               />
-            } 
+            }
+          />
+          {/* Route for displaying all Pokémon */}
+          <Route
+            path="/all-pokemon"
+            element={<AllPokemonPage  />}
           />
         </Routes>
       </div>
