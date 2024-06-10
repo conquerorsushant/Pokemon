@@ -1,5 +1,3 @@
-// src/components/PokemonList.jsx
-
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Select from '@mui/material/Select';
@@ -20,21 +18,20 @@ const PokemonList = ({
   setPokemons,
 }) => {
   const [selectedTeam, setSelectedTeam] = useState('');
-  const [username, setUsername] = useState('');
   const {
     teams,
     newTeamName,
     setNewTeamName,
     addPokemonToTeam,
     removePokemonFromTeam,
-    updateTeamName,
     createNewTeam,
-    deleteTeam,
     dialogOpen,
     setDialogOpen,
     dialogMessage,
+    setDialogMessage,
   } = useTeams();
 
+  // Handles adding a Pokémon to the selected team
   const handleAddToTeam = (pokemon) => {
     if (selectedTeam === '') {
       setDialogMessage('Please select a team.');
@@ -44,6 +41,7 @@ const PokemonList = ({
     addPokemonToTeam(pokemon, selectedTeam);
   };
 
+  // Handles removing a Pokémon from the selected team
   const handleRemoveFromTeam = (pokemon) => {
     if (selectedTeam === '') {
       setDialogMessage('Please select a team.');
@@ -53,11 +51,13 @@ const PokemonList = ({
     removePokemonFromTeam(pokemon.id, selectedTeam);
   };
 
+  // Checks if a Pokémon is in the selected team
   const isPokemonInTeam = (pokemon) => {
     if (selectedTeam === '') return false;
     return teams[selectedTeam].pokemons.some((p) => p.id === pokemon.id);
   };
 
+  // Fetches and updates the list of Pokémon
   const handleChangePokemon = async () => {
     const newPokemons = await fetchPokemons();
     setPokemons(newPokemons);
@@ -65,8 +65,8 @@ const PokemonList = ({
 
   return (
     <div>
-      <h2>{username && <p>Player Name: {username}</p>}</h2>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        {/* Team selection dropdown */}
         <Select
           value={selectedTeam}
           onChange={(e) => setSelectedTeam(e.target.value)}
@@ -82,19 +82,22 @@ const PokemonList = ({
             </MenuItem>
           ))}
         </Select>
+
+        {/* Team creation form */}
         <TeamCreationForm
           newTeamName={newTeamName}
           setNewTeamName={setNewTeamName}
           createNewTeam={createNewTeam}
-          username={username}
-          setUsername={setUsername}
         />
       </div>
+
       <div style={{ marginBottom: '20px' }}>
+        {/* Button to change Pokémon */}
         <Button variant="contained" onClick={handleChangePokemon}>
           Change Pokémon
         </Button>
       </div>
+
       <Grid container spacing={2}>
         {pokemons.map((pokemon) => (
           <Grid item xs={12} sm={6} md={4} lg={2.4} key={pokemon.id}>
@@ -108,6 +111,7 @@ const PokemonList = ({
         ))}
       </Grid>
 
+      {/* Dialog for displaying messages */}
       <Dialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}

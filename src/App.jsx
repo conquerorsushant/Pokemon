@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React, { useEffect, useState } from 'react';
 import { fetchPokemons } from './services/pokemonService';
 import Layout from './components/Layout';
@@ -7,19 +5,21 @@ import useTeams from './hooks/useTeams';
 import './App.css';
 
 const App = () => {
-  const [pokemons, setPokemons] = useState([]);
-  const [username, setUsername] = useState('');
+  const [pokemons, setPokemons] = useState([]); // State to hold fetched Pokémon
+  const [username, setUsername] = useState(''); // State to hold the username
+
+  // Custom hook to manage teams
   const {
     teams,
     newTeamName,
     setNewTeamName,
     addPokemonToTeam,
     removePokemonFromTeam,
-    updateTeamName,
     createNewTeam,
     deleteTeam,
   } = useTeams();
 
+  // Fetch Pokémon data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchPokemons();
@@ -35,7 +35,6 @@ const App = () => {
       teams={teams}
       addPokemonToTeam={addPokemonToTeam}
       removePokemonFromTeam={removePokemonFromTeam}
-      updateTeamName={updateTeamName}
       deleteTeam={deleteTeam}
       newTeamName={newTeamName}
       setNewTeamName={setNewTeamName}

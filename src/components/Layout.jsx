@@ -5,7 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import PokemonList from './PokemonList';
 import TeamManager from './TeamManager';
-import AllPokemonPage from './AllPokemonPage'; // Import the new component
+import AllPokemonPage from './AllPokemonPage'; // Import the AllPokemonPage component
+
+// Define a function to extract all Pokémon from all teams and return them as a single array
+const getAllPokemonsFromTeams = (teams) => {
+  return teams.reduce((allPokemons, team) => {
+    return allPokemons.concat(team.pokemons);
+  }, []);
+};
 
 const Layout = ({
   pokemons,
@@ -26,6 +33,7 @@ const Layout = ({
       <Navbar />
       <div className="container">
         <Routes>
+          {/* Route for displaying the Pokémon list and managing teams */}
           <Route
             path="/"
             element={
@@ -43,6 +51,7 @@ const Layout = ({
               />
             }
           />
+          {/* Route for managing teams */}
           <Route
             path="/teams"
             element={
@@ -54,7 +63,8 @@ const Layout = ({
               />
             }
           />
-          <Route path="/all-pokemon" element={<AllPokemonPage />} /> {/* Add this route */}
+          {/* Route for displaying all Pokémon */}
+          <Route path="/all-pokemon" element={<AllPokemonPage allPokemons={getAllPokemonsFromTeams(teams)} />} />
         </Routes>
       </div>
     </Router>

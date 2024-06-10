@@ -1,5 +1,3 @@
-// src/components/PokemonCard.jsx
-
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +8,7 @@ import Button from '@mui/material/Button';
 const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
   const [showDetails, setShowDetails] = useState(false);
 
+  // Toggles the display of Pokémon details
   const handleToggleDetails = () => {
     setShowDetails((prevShowDetails) => !prevShowDetails);
   };
@@ -25,9 +24,6 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
         },
         width: '230px', // Fixed width for square shape
         height: 'auto', // Fixed height for square shape
-        // display: 'flex',
-        // flexDirection: 'column',
-        // justifyContent: 'space-between',
       }}
     >
       <CardMedia
@@ -40,7 +36,7 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
           objectFit: 'contain', // Ensure the image is contained within the card without distortion
         }}
       />
-      <CardContent >
+      <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {pokemon.name}
         </Typography>
@@ -59,6 +55,7 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
         )}
       </CardContent>
       <div style={{ marginBottom: '10px', textAlign: 'center' }}>
+        {/* Conditionally render Add/Remove buttons if `isInTeam` prop is defined */}
         {isInTeam !== undefined && (
           isInTeam ? (
             <Button variant="contained" color="secondary" onClick={onRemoveFromTeam} style={{ marginTop: '10px' }}>
@@ -70,6 +67,7 @@ const PokemonCard = ({ pokemon, onAddToTeam, onRemoveFromTeam, isInTeam }) => {
             </Button>
           )
         )}
+        {/* Button to show/hide Pokémon details */}
         <Button variant="contained" onClick={handleToggleDetails} style={{ marginLeft: '10px', marginTop: '8px' }}>
           {showDetails ? 'Hide' : 'Info'}
         </Button>

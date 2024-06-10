@@ -1,5 +1,3 @@
-// src/components/TeamManager.jsx
-
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,14 +10,18 @@ import TextField from '@mui/material/TextField';
 const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, deleteTeam }) => {
   return (
     <div>
-      <h2 style={{ color: 'white',marginBottom:'20px' }}>{username ? `${username}'s Teams` : 'Teams'}</h2>
+      {/* Display the username's teams or just 'Teams' if no username */}
+      <h2 style={{ color: 'white', marginBottom: '20px' }}>
+        {username ? `${username}'s Teams` : 'Teams'}
+      </h2>
       {teams.map((team, index) => (
         <div key={index} style={{ marginBottom: '20px' }}>
           <div style={{ display: 'flex', marginBottom: '10px' }}>
+            {/* Text field to update team name */}
             <TextField
               value={team.name}
               onChange={(e) => updateTeamName(index, e.target.value)}
-              style={{ width: '20%', color: 'white',border:'2px solid white' }}
+              style={{ width: '20%', color: 'white', border: '2px solid white' }}
               InputProps={{
                 style: {
                   color: 'white',
@@ -31,6 +33,7 @@ const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, d
                 },
               }}
             />
+            {/* Button to remove team */}
             <Button
               variant="contained"
               color="secondary"
@@ -40,7 +43,8 @@ const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, d
               Remove Team
             </Button>
           </div>
-          <Grid container spacing={2} justifyContent="center">
+          {/* Grid container to display team's Pokémon */}
+          <Grid container spacing={2} >
             {team.pokemons.map((pokemon) => (
               <Grid item xs={12} sm={6} md={4} lg={2.4} key={pokemon.id}>
                 <Card
@@ -68,6 +72,7 @@ const TeamManager = ({ username, teams, removePokemonFromTeam, updateTeamName, d
                     <Typography gutterBottom variant="h5" component="div">
                       {pokemon.name}
                     </Typography>
+                    {/* Button to remove Pokémon from team */}
                     <Button
                       variant="contained"
                       color="secondary"
